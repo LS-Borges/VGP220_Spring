@@ -3,6 +3,7 @@
 
 //Name: Leon Borges e Silva
 //StudentId: 2022595
+//Grade: 92/100
 
 int RecursiveMultiplication(int a, int b);
 int NonRecursiveFibonacci(int n);
@@ -13,18 +14,40 @@ int DynamicProgrammingFunc(int n);
 int main(int argc, char* argv[])
 {
 	//Tests:
-	std::cout << RecursiveMultiplication(2, 5) << std::endl; // Expected result: 10
+	std::cout << RecursiveMultiplication(2, 10) << std::endl; // Expected result: 10
 
-	std::cout << NonRecursiveFibonacci(5) << std::endl; //Expected result: 5
+	std::cout << NonRecursiveFibonacci(8) << std::endl; //Expected result: 5
 
-	PrintFibonacciLessThan15(7); //Expected result: 0 1 1 2 3 5 8 13
+	PrintFibonacciLessThan15(14); //Expected result: 0 1 1 2 3 5 8 13
 
 	std::cout << std::endl;// ->Adding an extra line
 
-	printRecursiveFactorialLessThan50(10);//Expected result: 10 * 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1
+	printRecursiveFactorialLessThan50(49);//Expected result: 10 * 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1
 
 	return 0;
 }
+
+//ERROR: -8. 2 main mistakes here. The first one, you are asking the user to use just 
+//positive integers, which is wrong, because a multiplication accepts negative numbers 
+//and zeros. The second one is that you didn't use Recursion. Look at the name of the function...
+
+//A good answer for this question is: 
+//int RecursiveMultiplication(int a, int b)
+//{
+//	if (b == 0) 
+//	{
+//		return 0;
+//	}
+//	if (b > 0) 
+//	{
+//		return a + RecursiveMultiplication(a, b - 1);
+//	}
+//	if (b < 0) 
+//	{
+//		return -RecursiveMultiplication(a, -b);
+//	}
+//}
+
 
 int RecursiveMultiplication(int a, int b)
 {
@@ -47,13 +70,15 @@ int RecursiveMultiplication(int a, int b)
 		return result;
 	}
 
-	//TODO: Write a recursive function to multiply two positive integers
-	//without using the operator *
-	//You can use addition(+), subtraction(-) and bitShifting(<< or >>), but you
-	//should minimize the number of those operations.
+//	TODO: Write a recursive function to multiply two positive integers
+//	without using the operator *
+//	You can use addition(+), subtraction(-) and bitShifting(<< or >>), but you
+//	should minimize the number of those operations.
 
 }
 
+//COMMENT: It's working, so no deduction. But you could make it a little bit more optional.
+//It's all good!
 int NonRecursiveFibonacci(int n)
 {
 	int counter = 2;
@@ -94,6 +119,7 @@ int NonRecursiveFibonacci(int n)
 	//to a non recursive method, using a bottom-up approach.
 }
 
+//COMMENT: PERFECT!
 int PrintFibonacciLessThan15(int n)
 {
 	assert(n < 15);
@@ -111,6 +137,7 @@ int PrintFibonacciLessThan15(int n)
 	return 0;
 }
 
+//COMMENT: PERFECT!
 int printRecursiveFactorialLessThan50(int n)
 {
 	assert(n < 50);
