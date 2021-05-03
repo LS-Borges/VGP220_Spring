@@ -3,6 +3,9 @@
 //Name: Leon Borges e Silva
 //StudentId: 2022595
 
+//Grade: 90/100. Nice work!
+
+//ERROR: -5. Look how current is updating. O(log n) is the best behavior.
 //TODO:  
 //Question 1:
 //How much time does the following method take? Use the big-O notation in terms
@@ -35,6 +38,8 @@ int pow_a(int m, int n)
 }
 //Answer for pow_a: O(n)
 
+//ERROR: -5. i in this function is receiving n and i changes inside the while loop, being divided by 2
+//every step. So the best answer in this case is O(log n).
 int pow_b(int m, int n) {
     int ret = 1;
     int k = m;

@@ -3,6 +3,8 @@
 #include <iostream>
 #include "Item.h"
 
+//Grade: 92/100
+
 class Inventory
 {
 public:
@@ -50,6 +52,7 @@ public:
 		std::cout << "Destructor called!" << std::endl;
 	}
 
+	//ERROR: -2. You forgot to check if they are equal. You don't need to copy if both elements are equal.
 	//TODO: Implement a copy assignment operator
 	Inventory& operator=(const Inventory& rhs)
 	{
@@ -60,6 +63,7 @@ public:
 		return *this;
 	}
 
+	//ERROR: -2. You don't need to move if both elements are equal.
 	//TODO: Implement a move assignment operator
 	Inventory& operator=(Inventory&& rhs)
 	{
@@ -221,6 +225,14 @@ public:
 		std::cout << "Inventory reduced!" << std::endl;
 	}
 
+	//ERROR: -3. You did almost eerything correct, you just lost yourself when you have to remove the whole
+	//item. To remove the whole item, you just reduce the mSlotsOccupied variable and shift all the slots 
+	//from the right of the item that you are removing to the left.
+	//For example:
+	//[ HP 50 ] [ HP 30 ] [SHIELD 3] [  ] [  ] //You tried to remove 80 HP from the inventory
+	//[ HP 30 ] [SHIELD 3] [  ] [  ] [  ] //You just remove from first slot and shitf the rest.->This is what the user sees
+	//[ HP 30 ] [SHIELD 3] [SHIELD 3] [  ] [  ] //This is what you should have in memory.
+
 	void RemoveItem(std::string itemName, int quantity)
 	{
 		//TODO: Implement RemoveItem method
@@ -252,7 +264,6 @@ public:
 			{
 				mInventory[index].quantity = mInventory[index].quantity - quantity;
 			}
-
 			else
 			{
 				for (int i = index; i < mSlotsOccupied; ++i)
@@ -280,6 +291,7 @@ public:
 
 	}
 
+	//ERROR: -1. Use Item should be easier than this. If you have a Remove Item, why not use here?
 	Item* UseItem(std::string itemName)
 	{
 		// TODO: Search for the item and if it exists, return this item and remove one from the inventory
